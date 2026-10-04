@@ -1,0 +1,6 @@
+-r requirements.txt
+
+black==x.y.z
+mypy==x.y.z
+pytest==x.y.z
+ruff==x.y.z

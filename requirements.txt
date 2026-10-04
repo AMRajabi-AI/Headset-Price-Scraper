@@ -1,0 +1,3 @@
+beautifulsoup4==x.y.z
+pandas==x.y.z
+requests==x.y.z
