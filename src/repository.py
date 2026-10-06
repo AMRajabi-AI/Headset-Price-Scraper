@@ -1,6 +1,6 @@
 import pandas as pd
 
-class Repository:
+class DataManager:
     
     def __init__(self, products):
         self.products = products
