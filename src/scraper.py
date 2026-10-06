@@ -1,6 +1,9 @@
 import requests
 
-BASE_URL = "https://api.digikala.com/discovery/api/v2/categories/211/products?attribute_9651%5B0%5D=49183&page=1"
+BASE_URL = "https://api.digikala.com/discovery/api/v2/categories/211/products"
+
+params = {"attribute_9651[0]" : 49183,
+          "page" : 1}
 
 response = requests.get(BASE_URL,timeout=30)
 
