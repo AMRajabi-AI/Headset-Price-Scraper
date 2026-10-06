@@ -10,7 +10,7 @@ class Scraper:
     def get_status(self):
         return self.response.status_code
     
-    def get_data(self):
+    def get_products(self):
         data = self.response.json()
         products = data["data"]["widgets"][0]["data"]["widgets"]
         return products
