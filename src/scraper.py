@@ -1,15 +1,16 @@
 import requests
 
-BASE_URL = "https://api.digikala.com/discovery/api/v2/categories/211/products"
+class Scraper:
 
-params = {"attribute_9651[0]" : 49183,
-          "page" : 1}
+    def __init__(self, base_url, params):
+        self.base_url = base_url
+        self.params = params
+        self.response = requests.get(base_url, params, timeout=30)
 
-response = requests.get(BASE_URL,timeout=30)
-
-print(response.status_code)
-
-products = response.json()
-product = products["data"]["widgets"][0]["data"]["widgets"][0]["data"]
-
-print(product["title_fa"])
+    def get_status(self):
+        return self.response.status_code
+    
+    def get_data(self):
+        data = self.response.json()
+        products = data["data"]["widgets"][0]["data"]["widgets"]
+        return products
