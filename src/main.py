@@ -7,8 +7,6 @@ response = requests.get(BASE_URL,timeout=30)
 
 print(response.status_code)
 
-products = []
-
 # data = response.json()
 
 with open("response.json", "r", encoding="utf-8") as f:
