@@ -4,7 +4,7 @@ class DataManager:
     
     def __init__(self, products):
         self.products = products
-        self.ds = self.products.__dict__
+        self.ds = [product.__dict__ for product in products]
 
     def to_dataframe(self):
         df = pd.DataFrame(data=self.ds)
