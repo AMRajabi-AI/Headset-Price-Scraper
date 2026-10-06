@@ -15,6 +15,6 @@ with open("response.json", "r", encoding="utf-8") as f:
 product = products["data"]["widgets"][0]["data"]["widgets"][0]["data"]
 
 print(product["id"],
-      product["title_fa"],
-      product["status"],
-      product["url"])
+      f'\n{product["title_fa"]}',
+      f'\n{product["status"]}',
+      f'\n{product["url"]}')
