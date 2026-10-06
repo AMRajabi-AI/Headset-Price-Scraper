@@ -1,23 +1,22 @@
-import requests
-import json
+from config import BASE_URL, PARAMS
+from scraper import Scraper
+from product import Product
 
-BASE_URL = "https://api.digikala.com/discovery/api/v2/categories/211/products"
+data = Scraper(BASE_URL, PARAMS)
 
-params = {"attribute_9651[0]" : 49183,
-          "page" : 1}
+products_data = data.get_products()
+products = []
 
-response = requests.get(BASE_URL,timeout=30,params=params)
+for product_data in products_data:
+    if "data" in product_data and product_data["data"]:
+        product = Product(product_data["data"]["id"],
+                          product_data["data"]["title_fa"],
+                          product_data["data"]["default_variant"]["price"]["selling_price"],
+                          product_data["data"]["status"],
+                          "https://www.digikala.com" + product_data["data"]["url"]["uri"])
+        products.append(product)
 
-print(response.status_code)
+print(f"{products[0].id},\n{products[0].title_fa}\n{products[0].price}\n{products[0].status}\n{products[0].url}")
 
-# data = response.json()
-
-with open("response.json", "r", encoding="utf-8") as f:
-    products = json.load(f)
-
-product = products["data"]["widgets"][0]["data"]["widgets"][0]["data"]
-
-# print(product["id"],
-#       f'\n{product["title_fa"]}',
-#       f'\n{product["status"]}',
-#       f'\n{product["url"]}')
+# https://www.digikala.com
+# product = data["data"]["widgets"][0]["data"]["widgets"][0]["data"]
