@@ -11,6 +11,5 @@ class DataManager:
         return df
 
     def export(self):
-        df = pd.DataFrame(data=self.ds)
+        df = self.to_dataframe()
         df.to_csv("data/products.csv",encoding="utf-8-sig")
-        return None
