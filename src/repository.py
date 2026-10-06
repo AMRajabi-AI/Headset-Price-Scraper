@@ -1,6 +1,6 @@
 import pandas as pd
 
-class Repo:
+class Repository:
     
     def __init__(self, products):
         self.products = products
